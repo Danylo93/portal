@@ -1,0 +1,180 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastrar Serviço</title>
+  <link rel="stylesheet" href="/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="/css/adminlte.min.css">
+  <link rel="stylesheet" href="<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <main>
+    <div class="content-header">
+      <div class="container-fluid">
+        <h1>Novo Serviço</h1>
+      </div>
+    </div>
+    <div class="content">
+      <div class="container-fluid">
+        <form action="/admin/services" method="post">
+        <input type="hidden" name="_csrf" value="{{csrfToken}}">
+       <div class="card">
+        <div class="card-body">
+          <fieldset>
+            <legend>Identificação</legend>
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="col-lg-6">
+                  <div class="{{alert}}">
+                  <p>{{{message}}}</p>
+                </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="nome">Nome</label>
+                  <input type="text" required value="{{oldData.0.nome}}" class="form-control" name="nome" placeholder="nome do serviço">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="icone">Icone</label>
+                  <select name="icone" id="icone" class="form-control">
+                    <option value="{{#if message}}{{oldData.0.icone}}{{^}}Selecione o Icone{{/if}}">{{#if message}}{{oldData.0.icone}}{{^}}Selecione o Icone{{/if}}</option>
+                    <option value="twf-cleaning-1">Icone 1</option>
+                    <option value="twf-cleaning-2">Icone 2</option>
+                    <option value="twf-cleaning-3">Icone 3</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="posicao">Posição na plataforma</label>
+                  <input type="text" value="{{oldData.0.posicao}}" class="form-control" name="posicao" placeholder="Posição do  serviço na plataforma" data-mask="00" required>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>Globais</legend>
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="valorMinimo">Valor Minimo</label>
+                  <input type="text" value="{{oldData.0.valorMinimo}}" class="form-control" name="valorMinimo" placeholder="valor minimo do serviço" 
+                   required data-mask="#.##0,00" data-mask-reverse="true" >
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="quantidadeHoras">Quantidade Minima de horas</label>
+                  <input type="number" value="{{oldData.0.quantidadeHoras}}" class="form-control" name="quantidadeHoras" placeholder="quantidade minima de horas"
+                  data-mask="0" required >
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="porcentagem">Porcentagem da comissão</label>
+                  <input type="text" value="{{oldData.0.porcentagem}}" class="form-control" name="porcentagem" placeholder="Porcentagem da comissão" data-mask="000" required>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>Cômodos</legend>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="valorQuarto">Valor por quarto</label>
+                  <input type="text" value="{{oldData.0.valorQuarto}}" class="form-control" name="valorQuarto" placeholder="Valor por quarto" required data-mask="#.##0,00" data-mask-reverse="true">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="horasQuarto">Quantidade de horas por quarto</label>
+                  <input type="number" value="{{oldData.0.horasQuarto}}" class="form-control" name="horasQuarto" placeholder="Quantidade de horas por quarto" data-mask="0" required>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="valorSala">Valor por Sala</label>
+                  <input type="text" value="{{oldData.0.valorSala}}" class="form-control" name="valorSala" placeholder="Valor por Sala" required data-mask="#.##0,00" data-mask-reverse="true">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="horasSala">Quantidade de horas por Sala</label>
+                  <input type="number" value="{{oldData.0.horasSala}}" class="form-control" name="horasSala" placeholder="Quantidade de horas por Sala" data-mask="0" required>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="valorBanheiro">Valor por Banheiro</label>
+                  <input type="text" value="{{oldData.0.valorBanheiro}}" class="form-control" name="valorBanheiro" placeholder="Valor por Banheiro" required data-mask="#.##0,00" data-mask-reverse="true">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="horasBanheiro">Quantidade de horas por Banheiro</label>
+                  <input type="number" value="{{oldData.0.horasBanheiro}}" class="form-control" name="horasBanheiro" placeholder="Quantidade de horas por Banheiro" data-mask="0" required>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="valorCozinha">Valor por Cozinha</label>
+                  <input type="text" value="{{oldData.0.valorCozinha}}" class="form-control" name="valorCozinha" placeholder="Valor por Cozinha" required data-mask="#.##0,00" data-mask-reverse="true">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="horasCozinha">Quantidade de horas por Cozinha</label>
+                  <input type="number" value="{{oldData.0.horasCozinha}}" class="form-control" name="horasCozinha" placeholder="Quantidade de horas por Cozinha" data-mask="0" required>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="valorQuintal">Valor por Quintal</label>
+                  <input type="text" value="{{oldData.0.valorQuintal}}" class="form-control" name="valorQuintal" placeholder="Valor por Quintal" required data-mask="#.##0,00" data-mask-reverse="true">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="horasQuintal">Quantidade de horas por Quintal</label>
+                  <input type="number" value="{{oldData.0.horasQuintal}}" class="form-control" name="horasQuintal" placeholder="Quantidade de horas por Quintal" data-mask="0" required>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="valorOutros">Valor Outros tipos de cômodos</label>
+                  <input type="text" value="{{oldData.0.valorOutros}}" class="form-control" name="valorOutros" placeholder="Valor Outros tipos de cômodos" required data-mask="#.##0,00" data-mask-reverse="true">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="horasOutros">Quantidade de horas por Outros cômodos</label>
+                  <input type="number" value="{{oldData.0.horasOutros}}" class="form-control" name="horasOutros" placeholder="Quantidade de horas por Outros cômodos" data-mask="0" required>
+                </div>
+              </div>
+              
+            </div>
+          </fieldset>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group">
+                <button class="btn btn-primary" type="submit">Salvar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+       </div> 
+        </form>
+      </div>
+    </div>
+  </main>
+  
+</body>
+</html>
